@@ -1,5 +1,4 @@
 # sqlmap 笔记
----------------
 
 ### sqlmap常用命令
 
@@ -12,7 +11,8 @@
 --cookie="cookie" 抓包的cookie值 要用 --level=2 以上
 
 
---dbs 爆数据库名称ta
+--dbs 爆数据库名称
+
 --tables -D "db_name" 爆出数据库的列名表名
 
 --columns -T "table_name" -D "db_name" 爆出数据库表的字段名
