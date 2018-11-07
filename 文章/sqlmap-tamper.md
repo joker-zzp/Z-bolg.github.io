@@ -38,13 +38,13 @@
 |33 |plus2concat                |将加号替换为concat函数
 |34 |plus2fnconcat              |将加号替换为ODBC函数{fn CONCAT()}
 |35 |randomcase                 |字符大小写随机替换
-|36 |randomcomments             |/**/分割关键字
+|36 |randomcomments             |/\*\*/分割关键字
 |37 |securesphere               |添加某字符串
 |38 |sp_password                |追加sp_password字符串
-|39 |space2comment              |空格替换为/**/
+|39 |space2comment              |空格替换为/\*\*/
 |40 |space2dash                 |空格替换为–加随机字符
 |41 |space2hash                 |空格替换为#加随机字符
-|42 |space2morecomment          |空格替换为/\**_*\*/
+|42 |space2morecomment          |空格替换为/\*\*\_\*\*/
 |43 |space2morehash             |空格替换为#加随机字符及换行符
 |44 |space2mssqlblank           |空格替换为其他空符号
 |45 |space2mssqlhash            |空格替换为%23%0A
