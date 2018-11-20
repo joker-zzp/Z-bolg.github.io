@@ -1,11 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta charset="utf-8"/>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>404</title>
-  </head>
-  <body>
-      <h1>404</h1>
-  </body>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>404</title>
+        <style>
+            @font-face{
+                font-family: myfont;
+                src: url('./public/fonts/Hack-Bold.ttf');
+            }
+            body, h1, h2, h3, p, a {
+                color: #00ff00;
+            }
+            body,
+            p {
+                font-style: normal;
+                font-family: myfont;
+                font-size: 1.25rem;
+            }
+            h1 {
+                font-style: normal;
+                font-family: myfont;
+                font-size: 2.75rem;
+            }
+            body {
+                background-color: #000;
+            }
+            .container {
+                width: 100%;
+                margin: auto;
+                max-width: 640px;
+            }
+            .bsod {
+                padding-top: 10%;
+            }
+            .bsod .neg {
+                text-align: center;
+                color: #000000;
+            }
+            .bsod .neg .bg {
+                background: #00ff00;
+                padding: 0 15px 2px 14px;
+            }
+            .bsod .title {
+                margin-bottom: 50px;
+            }
+            .bsod .nav {
+                margin-top: 35px;
+                text-align: center;
+            }
+            .bsod .nav .link {
+                text-decoration: none;
+                padding: 0 9px 2px 8px;
+            }
+            .bsod .nav .link:hover, .bsod .nav .link:focus {
+                background: #00ff00;
+                color: #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="bsod container">
+            <h1 class="neg title">
+                <span class="bg">Error - 404</span>
+            </h1>
+            <p>An error has occured, to continue:</p>
+            <p>* Return to our homepage.
+                <br/>
+                * Send us an e-mail about this error and try later.
+            </p>
+            <nav class="nav">
+                <a href="./index.html" class="link">index</a>&nbsp;|&nbsp;<a href="#" class="link">webmaster</a>
+            </nav>
+        </main>
+    </body>
 </html>
