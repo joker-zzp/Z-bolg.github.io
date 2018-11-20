@@ -13,19 +13,8 @@
 		window.onload = () => {
 			const CANVAS = document.getElementsByTagName("canvas")[0];
 			const CTX = CANVAS.getContext("2d");
-			const CHARS = [];
-			const MIN_CHARS = 8;
 
 			let ww, wh;
-
-			//随机数字0-9
-			function numberRandom () {
-				return Math.random() * 10;
-			}
-			
-			const XP = numberRandom() * 2;
-			const YP = numberRandom() * 2;
-			
 
 			//设置背景画布宽高
 			function setDim() {
@@ -33,15 +22,25 @@
 				wh = window.innerHeight;
 				CANVAS.width = ww;
 				CANVAS.height = wh;
+				file_text(wh, ww);
+			}
+
+			function file_text(wh, ww) {
+				//console.log(wh);
+				//console.log(ww);
+				
+				CTX.fillStyle = "#00ff00";
+				CTX.font = "20px monospace";
+				CTX.fillText("0",30,50);
 			}
 			
-			window.onresize = setDim;
+				window.onresize = () => {
+					setDim();
+				};
 
 			(() => {
 				setDim();
-				CTX.fillStyle = "#00ffff";
-				CTX.font = "20px monospace";
-				CTX.fillText("0",30,50);
+				//file_text();
 			})();
 		};
     </script>
