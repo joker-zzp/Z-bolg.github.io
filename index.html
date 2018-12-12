@@ -10,37 +10,43 @@
 <body>
     <canvas></canvas>
     <script>
-		window.onload = () => {
-			const CANVAS = document.getElementsByTagName("canvas")[0];
-			const CTX = CANVAS.getContext("2d");
+	    const CANVAS = document.getElementsByTagName("canvas")[0];
+	    const CTX = CANVAS.getContext("2d");
+	    
+	    function test() {
+		    //CTX.clearRect(0, 0, 200, 100);
+		    CTX.fillStyle = '#ffffff';
+		    CTX.fillRect(10, 10, 80, 80);
 
-			let ww, wh;
+		    let path = new Path2D();
+		    path.arc(50, 50, 25, 0, Math.PI*2, true);
 
-			//设置背景画布宽高
-			function setDim() {
-				ww = window.innerWidth;
-				wh = window.innerHeight;
-				CANVAS.width = ww;
-				CANVAS.height = wh;
-				file_text(wh, ww);
-			}
-
-			function file_text(wh, ww) {
-
-				CTX.fillStyle = "#00ff00";
-				CTX.font = "20px monospace";
-				CTX.fillText("0",30,50);
-			}
-			
-				window.onresize = () => {
-					setDim();
-				};
-
-			(() => {
-				setDim();
-				//file_text();
-			})();
-		};
+		    path.moveTo(65,55);
+		    path.arc(50, 55, 15, 0, Math.PI, false);
+		    path.moveTo(45, 45);
+		    path.arc(40, 45, 5, 0, Math.PI*2, true);
+		    path.moveTo(65, 45);
+		    path.arc(60, 45, 5, 0, Math.PI*2, true);
+		    CTX.strokeStyle = '#000000';
+		    CTX.stroke(path);
+	    };
+	    
+	    window.onload = () => {
+		    (() => {
+			onResize();
+			test();
+		    })();
+	    };
+	    
+	    function onResize() {
+                    CANVAS.width  = document.documentElement.clientWidth;
+                    CANVAS.height = document.documentElement.clientHeight;
+            };
+	    
+	    window.onresize = () =>{
+                    onResize();
+                    test();
+            };
     </script>
 </body>
 </html>
