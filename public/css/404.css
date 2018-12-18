@@ -1,20 +1,15 @@
-@font-face{
-    font-family: myfont;
-    src: url(../fonts/Hack-Bold.ttf);
-    /*src: url("/public/fonts/Hack-Bold.ttf");*/
-}
 body, h1, h2, h3, p, a {
     color: #00ff00;
 }
 body,
 p {
     font-style: normal;
-    font-family: myfont;
+    font-family: Hack-Bold;
     font-size: 1.25rem;
 }
 h1 {
     font-style: normal;
-    font-family: myfont;
+    font-family: Hack-Bold;
     font-size: 2.75em;
 }
 body {
