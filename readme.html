@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>zzp.readme</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Base16 Atelier Seaside Dark - Theme */
+/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/seaside) */
+/* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
+
+/* Atelier-Seaside Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #809980;
+}
+
+/* Atelier-Seaside Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-name,
+.hljs-regexp,
+.hljs-link,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #e6193c;
+}
+
+/* Atelier-Seaside Orange */
+.hljs-number,
+.hljs-meta,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params {
+  color: #87711d;
+}
+
+/* Atelier-Seaside Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet {
+  color: #29a329;
+}
+
+/* Atelier-Seaside Blue */
+.hljs-title,
+.hljs-section {
+  color: #3d62f5;
+}
+
+/* Atelier-Seaside Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #ad2bee;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #131513;
+  color: #8ca68c;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="%E5%BC%A0%E5%BF%97%E9%B9%8F"><strong>张志鹏</strong></h1>
+<h2 id="%E5%9F%BA%E6%9C%AC%E8%B5%84%E6%96%99"><strong>基本资料</strong></h2>
+<p><strong>出生日期:</strong> 1995.01.24</p>
+<p><strong>暂住于:</strong> 北京市昌平区平西府地铁站附近</p>
+<p><strong>电话:</strong> 177 1042 9106</p>
+<p><strong>QQ :</strong> 468462891</p>
+<p><strong>Wechat:</strong> joker_zzp</p>
+<p><strong>Email:</strong> joker_zhangzhp@foxmail.com</p>
+<h2 id="%E6%B1%82%E8%81%8C%E6%84%8F%E5%90%91"><strong>求职意向</strong></h2>
+<p><strong>职位:</strong> 软件测试工程师
+<strong>薪资:</strong> 7K ~ 8K</p>
+<h2 id="%E6%8E%8C%E6%8F%A1%E6%8A%80%E8%83%BD"><strong>掌握技能</strong></h2>
+<ul>
+<li>熟练掌握 Windows系统/Linux系统 开发测试环境搭建 各种office工具使用</li>
+<li>熟练掌握 软件测试开发流程 多种测试用例设计方法</li>
+<li>熟练掌握 代码管理工具git 缺陷管理工具禅道 环境搭建维护</li>
+<li>熟悉了解 Linux系统常用操作命令 服务搭建 shell脚本编写</li>
+<li>熟悉了解 Load Runner/Jmeter 性能测试工具 插件安装 服务器配置 监控和调度服务器</li>
+<li>熟悉了解 性能压力测试算法 可以设计搭建压力测试场景 协助开发分析解决性能缺陷</li>
+<li>熟悉了解 Jmeter 接口测试 配合fiddler/Burpsuite 抓包改包进行接口测试</li>
+<li>熟悉了解 MySQL/Oracle sql语法 常用语句 增删改查</li>
+<li>熟悉了解 SQL注入 了解SQL注入原理 使用sqlmap对系统进行爬站扫描注入点 对服务器进行渗透测试</li>
+<li>熟悉了解 XSS攻击原理 xss漏洞检测 使用beef进行 客户端劫持 DDOS攻击</li>
+<li>了解知道 selenium 自动化测试框架 能使用python 编写自动化脚本</li>
+<li>了解知道 Java/python/html/JavaScript/css 基本语法</li>
+<li>了解知道 渗透测试过程及原理</li>
+<li>了解知道 dns劫持实现过程 中间人攻击</li>
+<li>了解知道 nginx 反向代理 主从 来提高服务器安全性和高并发</li>
+</ul>
+<h2 id="%E6%95%99%E8%82%B2%E7%BB%8F%E5%8E%86"><strong>教育经历</strong></h2>
+<p><strong>北京语言大学</strong>
+<em>2018.09 ~ 至今</em></p>
+<p>专业: 计算机科学与技术 （本科）</p>
+<p><strong>北京国家开放大学</strong>
+<em>2014.10 ~ 2017.07</em></p>
+<p>专业: 行政管理 （大专）</p>
+<p><strong>首钢职业技术学院</strong>
+<em>2010.09 ~ 2013.07</em></p>
+<p>专业: 机电一体化 （中技）</p>
+<h2 id="%E5%B7%A5%E4%BD%9C%E7%BB%8F%E5%8E%86"><strong>工作经历</strong></h2>
+<p><strong>万众金福科技有限公司</strong>
+<em>2018.09 ~ 至今</em></p>
+<p>职位: 软件测试工程师</p>
+<p><strong>北京安托软件技术有限公司</strong>
+<em>2017.02 ~ 2018.04</em></p>
+<p>职位: 软件测试开发工程师</p>
+<p><strong>首钢建设集团有限公司</strong>
+<em>2013.10 ~ 2016.11</em></p>
+<p>职位: 高压电气调试技术员</p>
+<h2 id="%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C"><strong>项目经验</strong></h2>
+<p><strong>AI交易所</strong>
+<strong>（万众金福科技有限公司）</strong>
+<em>2018.9 ~ 2018.10</em></p>
+<p>环境介绍: 这个项目是在阿里云服务器 Ubuntu系统 nginx服务 MySQL数据库 PHP开发</p>
+<p>项目介绍: AI交易所</p>
+<ul>
+<li>该项目是区块链货币交易平台</li>
+<li>主要业务是买卖交易</li>
+<li>与其他平台资金划转</li>
+<li>好友转币</li>
+</ul>
+<p>责任描述:</p>
+<ol>
+<li>交易平台功能测试 找出交易的逻辑问题</li>
+<li>检查数据正确性</li>
+<li>使用sqlmap进行SQL防注入安全测试 拿下webshell进行一步渗透测试</li>
+<li>找XSS漏洞进行XSS漏洞测试</li>
+<li>文件上传漏洞测试 上传木马等非常规手段拿下服务器进行渗透测试</li>
+<li>使用Jmeter进行接口测试 使用Burpsuite进行抓包改包</li>
+<li>使用Jmeter进行压力测试 协助开发提高系统性能</li>
+<li>禅道服务器安全维护 管理项目bug 跟进开发修改问题</li>
+<li>手机端APP测试 接口测试</li>
+</ol>
+<p><strong>OTC交易平台</strong>
+<strong>（万众金福科技有限公司）</strong>
+<em>2018.10 ~ 2018.11</em></p>
+<p>环境介绍: 这个项目环境与AI交易所环境一致（LNMP环境）</p>
+<p>项目介绍: OTC交易平台</p>
+<ul>
+<li>该平台主要以买卖GLC(区块链数字货币)</li>
+<li>个人用户可以在该平台发布交易广告 与其他用户交易GLC</li>
+<li>与AI交易所等其他平台进行货币划转</li>
+</ul>
+<p>责任描述:</p>
+<ol>
+<li>平台功能测试 找出交易逻辑漏洞</li>
+<li>校验数据正确性</li>
+<li>使用sqlmap 进行SQL防注入安全测试 进行网站渗透测试</li>
+<li>找出XSS漏洞点 进行XSS漏洞测试</li>
+<li>文件上传漏洞测试 进行网站渗透测试</li>
+<li>使用Burpsuite抓包 接口测试</li>
+<li>禅道服务器安全维护 管理项目bug 跟进开发修改问题</li>
+</ol>
+<p><strong>AIC数字银行（APP）</strong>
+<strong>（万众金福科技有限公司）</strong>
+<em>2018.10 ~ 2018.11</em></p>
+<p>环境介绍: 后台功能用的（LNMP）环境</p>
+<p>项目介绍: AIC数字银行</p>
+<ul>
+<li>主要功能是给用户存币来进行孵化返币</li>
+<li>用户通过充币到数字银行 孵化返利也会根据用户的等级进行相应的给用户直推奖励</li>
+</ul>
+<p>责任描述:</p>
+<ol>
+<li>对功能进行测试</li>
+<li>使用sqlmap 进行SQL防注入安全测试</li>
+<li>文件上传相关漏洞测试</li>
+<li>使用Burpsuite抓包 进行接口测试</li>
+<li>禅道管理项目bug 跟进开发修改问题</li>
+</ol>
+<p><strong>情报管理系统</strong>
+<strong>（北京安托软件科技有限公司）</strong>
+<em>2017.02 ~ 2017.06</em></p>
+<p>环境介绍: 这个项目在RedHat7系统环境下 用Tomcat服务和Oracle数据库</p>
+<p>项目介绍: 情报管理系统</p>
+<ul>
+<li>该系统是为工业研究所开发的数据管理/人员管理和工作业务流程管理的OA系统</li>
+<li>数据管理 帮助研究所储存大量专业性数据 并实现快速检索统计 生成报表统计</li>
+<li>人员管理 根据各个部门的人员管理权限和区域的不同进行对系统访问权限控制</li>
+<li>工作业务流程 根据工作流程形成工作日报 工作申请 不同职权人员审批 自动化部署工作流程</li>
+</ul>
+<p>责任描述:</p>
+<ol>
+<li>分析需求 找出需求中不符合逻辑不合理的地方 提出修改建议</li>
+<li>绘制业务流程图 熟悉主业务流程及分支流程 模块之间关系</li>
+<li>拆分模块功能 使用Excel 编写测试用例</li>
+<li>使用 Eclipse + SVN 进行代码更新和测试环境搭建调试</li>
+<li>用简明话术编写缺陷报告 实时与开发人员沟通</li>
+<li>将bug 放到SVN进行管理 对bug进行跟踪 督促开发人员改进</li>
+<li>根据各个功能模块编写测试报告</li>
+<li>分析需求估测用户使用数量使用压力测试算法计算压力场景用户数量</li>
+<li>创造出测试用户 使用LoadRunner进行压力测试 搭建测试场景</li>
+<li>分析测试结果定位瓶颈业务模块 协助开发提高系统性能</li>
+<li>完善用户使用说明 帮助用户快速了解上手系统使用</li>
+</ol>
+<p><strong>车辆管理系统</strong>
+<strong>（北京安托软件科技有限公司）</strong>
+<em>2017.07 ~ 2017.09</em></p>
+<p>环境介绍: 这个项目是在 server 2008 系统环境下运行的 基于普元进行二次开发的 Oracle 数据库。</p>
+<p>项目介绍: 车辆管理系统（2017 拓展开发）</p>
+<ul>
+<li>单位人员信息和数据信息管理系统</li>
+<li>工作流程管理帮助公司人员胁从办公</li>
+<li>系统庞大功能很多只参与部分开发和测试工作</li>
+</ul>
+<p>责任描述:</p>
+<ol>
+<li>分析需求 找出需求可能存在的缺陷问题 参与需求评审 进行需求确认</li>
+<li>建议审计模块功能概要设计确认 数据结构确认</li>
+<li>在数据库中创建表结构编写创建表存储 SQL 语句</li>
+<li>查看人员表的数据结构 确定要传入的字段</li>
+<li>在普元架构上 编写业务逻辑代码查看比对输出的接口数据是否正确</li>
+<li>画 HTML 页面 编写页面代码获取 post 请求 检查相应数据是否正确</li>
+<li>根据数据库表结构编写 js 代码做数据验证 保证数据输入正确性 并给出相应提示信息</li>
+<li>使用 Excel 编写测试用例 记录测试点</li>
+<li>修改发现的 Bug 并与他人沟通相互测试</li>
+<li>使用 LoadRunner 进行压力测试搭建测试场景 检查单元模块压力性能是否达标</li>
+<li>完善审计模块功能说明文档</li>
+</ol>
+<h2 id="%E8%87%AA%E6%88%91%E8%AF%84%E4%BB%B7"><strong>自我评价</strong></h2>
+<p>有两年软件测试经验 在这两年学习到了很多东西并喜欢这种不断学习进步成长的状态 我学习接受新鲜事物的能
+力还可以 对人真诚友善 对工作认真负责 在工作中也一直保持这严谨仔细的工作态度</p>
+<p>优点: 对人真诚 容易与人相处善解人意 个人能力强 热心肠爱帮助人 对工作认真负责 敢于承担责任 不计
+较得失 适应环境能力强 喜欢学习自律能力强等</p>
+<p>爱好特长: 喜欢滑板 羽毛球 台球 玩游戏 软件开发 安全测试</p>
+
+</body>
+</html>
