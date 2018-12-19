@@ -11,3 +11,46 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "HoneyScript-SemiBold";
+  src: url("HoneyScript-SemiBold.woff2") format("woff2"),
+       url("HoneyScript-SemiBold.woff") format("woff"),
+       url("HoneyScript-SemiBold.ttf") format("truetype"),
+       url("HoneyScript-SemiBold.eot") format("embedded-opentype"),
+       url("HoneyScript-SemiBold.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JandaRomantic";
+  src: url("JandaRomantic.woff2") format("woff2"),
+       url("JandaRomantic.woff") format("woff"),
+       url("JandaRomantic.ttf") format("truetype"),
+       url("JandaRomantic.eot") format("embedded-opentype"),
+       url("JandaRomantic.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ThrowMyHandsUpintheAir";
+  src: url("ThrowMyHandsUpintheAir.woff2") format("woff2"),
+       url("ThrowMyHandsUpintheAir.woff") format("woff"),
+       url("ThrowMyHandsUpintheAir.ttf") format("truetype"),
+       url("ThrowMyHandsUpintheAir.eot") format("embedded-opentype"),
+       url("ThrowMyHandsUpintheAir.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "yiwangqingshen";
+  src: url("yiwangqingshen.woff2") format("woff2"),
+       url("yiwangqingshen.woff") format("woff"),
+       url("yiwangqingshen.ttf") format("truetype"),
+       url("yiwangqingshen.eot") format("embedded-opentype"),
+       url("yiwangqingshen.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

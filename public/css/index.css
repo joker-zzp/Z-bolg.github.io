@@ -1,3 +1,4 @@
+@import "../web.fonts/fonts.css";
 body {
     background-color: #000;
     overflow: hidden;
@@ -6,7 +7,7 @@ body,
 h1 {
     margin: 0;
     font-style: normal;
-    font-family: Hack-Bold;
+    font-family: JandaRomantic;
 }
 canvas {
     width: 100%;
