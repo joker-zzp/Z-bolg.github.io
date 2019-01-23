@@ -11,10 +11,18 @@
     <h1 style="color:#00ff00">This's test!</h1>
     <canvas>
     </canvas>
-    <script >
-		var fso = new ActiveXObject("Scripting.FileSystemObject");
-		console.log(fso);
+    <script>
+		function getRootPath() {
+			var curPath = window.document.location.href;
+			var pathName = window.document.location.pathname;
+			var pos = curPath.indexOf(pathName);
+			var localhostPath = curPath.substring(0, pos);
+			var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+			return (localhostPath + projectName);
+		}
+		console.log(getRootPath());
 		
+
 	    // const CANVAS = document.getElementsByTagName("canvas")[0];
 	    // const CTX = CANVAS.getContext("2d");
 	    
