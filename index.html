@@ -13,58 +13,58 @@
     </canvas>
     <script >
 		
-	    // const CANVAS = document.getElementsByTagName("canvas")[0];
-	    // const CTX = CANVAS.getContext("2d");
+	    const CANVAS = document.getElementsByTagName("canvas")[0];
+	    const CTX = CANVAS.getContext("2d");
 	    
-		// class heart {
-		// 	constructor(x, y) {
-		// 		this.x = x;
-		// 		this.y = y;
-		// 	}
+		class heart {
+			constructor(x, y) {
+				this.x = x;
+				this.y = y;
+			}
 
-		// 	toString() {
-		// 		console.log(this.x, this.y);	
-		// 	}
-		// };
+			toString() {
+				console.log(this.x, this.y);	
+			}
+		};
 
-		// let person = new heart(2, 3)
-		// person.toString();
-		// // test
-	    // function test() {
-		//     //CTX.clearRect(0, 0, 200, 100);
-		//     CTX.fillStyle = '#000000';
-		//     CTX.fillRect(10, 10, 80, 80);
+		let person = new heart(2, 3)
+		person.toString();
+		// test
+	    function test() {
+		    //CTX.clearRect(0, 0, 200, 100);
+		    CTX.fillStyle = '#000000';
+		    CTX.fillRect(10, 10, 80, 80);
 
-		//     let path = new Path2D();
-		//     path.arc(50, 50, 25, 0, Math.PI*2, true);
+		    let path = new Path2D();
+		    path.arc(50, 50, 25, 0, Math.PI*2, true);
 
-		//     path.moveTo(65,55);
-		//     path.arc(50, 55, 15, 0, Math.PI, false);
-		//     path.moveTo(45, 45);
-		//     path.arc(40, 45, 5, 0, Math.PI*2, true);
-		//     path.moveTo(65, 45);
-		//     path.arc(60, 45, 5, 0, Math.PI*2, true);
-		//     CTX.strokeStyle = '#00ff00';
-		//     CTX.stroke(path);
-	    // };
+		    path.moveTo(65,55);
+		    path.arc(50, 55, 15, 0, Math.PI, false);
+		    path.moveTo(45, 45);
+		    path.arc(40, 45, 5, 0, Math.PI*2, true);
+		    path.moveTo(65, 45);
+		    path.arc(60, 45, 5, 0, Math.PI*2, true);
+		    CTX.strokeStyle = '#00ff00';
+		    CTX.stroke(path);
+	    };
 
-		// // set window size
-	    // function onResize() {
-        //             CANVAS.width  = document.documentElement.clientWidth;
-        //             CANVAS.height = document.documentElement.clientHeight;
-        //     };
+		// set window size
+	    function onResize() {
+                    CANVAS.width  = document.documentElement.clientWidth;
+                    CANVAS.height = document.documentElement.clientHeight;
+            };
 	    
-	    // window.onload = () => {
-		//     (() => {
-		// 	onResize();
-		// 	test();
-		//     })();
-	    // };
+	    window.onload = () => {
+		    (() => {
+			onResize();
+			test();
+		    })();
+	    };
 	    
-	    // window.onresize = () =>{
-		// 	onResize();
-		// 	test();
-		// };
+	    window.onresize = () =>{
+			onResize();
+			test();
+		};
     </script>
 </body>
 </html>
