@@ -11,11 +11,9 @@
     <h1 style="color:#00ff00">This's test!</h1>
     <canvas>
     </canvas>
-    <script language="JavaScript">
-		var pathName = document.location.pathname;
-		var index = pathName.substr(1).indexOf("/");
-		var result = pathName.substr(0,index+1);
-		console.log(result);
+    <script >
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		console.log(fso);
 		
 	    // const CANVAS = document.getElementsByTagName("canvas")[0];
 	    // const CTX = CANVAS.getContext("2d");
