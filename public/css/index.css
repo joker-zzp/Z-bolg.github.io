@@ -1,13 +1,4 @@
-@font-face {
-    font-family: "JandaRomantic";
-    src: url("JandaRomantic.woff2") format("woff2"),
-         url("JandaRomantic.woff") format("woff"),
-         url("JandaRomantic.ttf") format("truetype"),
-         url("JandaRomantic.eot") format("embedded-opentype"),
-         url("JandaRomantic.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-  }
+@import "../web.fonts/JandaRomantic.css";
 
 body {
     background-color: #000;
