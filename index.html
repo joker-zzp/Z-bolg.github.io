@@ -8,19 +8,18 @@
     <title>Zzp 's blog</title>
 </head>
 <body>
-    <h1 style="color:#00ff00">This's test!</h1>
+	<h1 style="color:#00ff00">This's test!</h1>
+	<div style="width:400px; height:300px; color: #fff;">
+		<iframe name="document" src="./README.md" frameborder="0"></iframe>
+	</div>
     <canvas>
     </canvas>
     <script>
-		function getRootPath() {
-			var curPath = window.document.location.href;
-			var pathName = window.document.location.pathname;
-			var pos = curPath.indexOf(pathName);
-			var localhostPath = curPath.substring(0, pos);
-			var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
-			return (localhostPath + projectName);
-		}
-		console.log(getRootPath());
+
+		let iframed = document.getElementsByTagName("iframe")[0];
+		let t = iframed.contentWindow.document;
+		t.documentElement.style.color = "#fff";
+		console.log(t.documentElement.innerText);
 		
 
 	    // const CANVAS = document.getElementsByTagName("canvas")[0];
@@ -64,12 +63,12 @@
         //             CANVAS.height = document.documentElement.clientHeight;
         //     };
 	    
-	    // window.onload = () => {
-		//     (() => {
-		// 	onResize();
-		// 	test();
-		//     })();
-	    // };
+	    window.onload = () => {
+		    (() => {
+			// onResize();
+			// test();
+		    })();
+	    };
 	    
 	    // window.onresize = () =>{
 		// 	onResize();
