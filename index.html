@@ -1,83 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="./public/css/index.css">
-	<link rel="stylesheet" href="./public/js/jquery-3.3.1.min.js">
-    <title>Zzp 's blog</title>
+	<title>joker-Zzp 's blog</title>
+	<script>
+        window.onload=function(){
+		const CANVAS = document.getElementById("digitalRain");
+		let ctx = CANVAS.getContext("2d");
+        
+        /*将画布大小设置为窗口文档显示区大小*/
+        let width = document.documentElement.clientWidth;
+        let height = document.documentElement.clientHeight;
+        CANVAS.width = width;
+        CANVAS.height = height;
+    
+        let fontsize = 16;                          //数字字体大小
+        let columns = Math.ceil(width / fontsize);  //列数（向上取整）
+        let dropLine = [];                          
+        for (let i = 0; i < columns; i++) {
+            dropLine[i] = 0;
+        }
+        
+        /*Run*/
+        if(CANVAS.getContext){
+            timer = setInterval(draw, 30);
+        }
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.07)";   //设置透明度，逐渐覆盖之前的数字
+            ctx.fillRect(0, 0, width, height);       //填充画布
+            
+            ctx.fillStyle = "#00FF00";               
+            ctx.font = fontsize + "px Simsun";
+            for (let i = 0; i < columns; i++) {
+                let figure = Math.floor(Math.random()*10);  //生成0~9的伪随机数
+                
+                /*绘制数字(核心部分)*/
+                ctx.fillText(figure, i * fontsize, dropLine[i] * fontsize);
+                if (dropLine[i] * fontsize > height || Math.random() > 0.95){
+                    dropLine[i] = 0;
+                }
+                dropLine[i]++;
+            }
+        }
+    }
+	</script>
+	
 </head>
 <body>
-	<h1 style="color:#00ff00">This's test!</h1>
-	<div style="width:400px; height:300px;">
-		<iframe name="document" src="./README.md" style="border-style: solid;"></iframe>
-	</div>
-    <canvas>
-    </canvas>
-    <script>
-
-		let iframed = document.getElementsByName("document")[0];
-		let t = iframed.contentWindow.document;
-		t.documentElement.style.color = "#fff";
+	<canvas id="digitalRain"></canvas>
+	<header class="header">
+		<!-- <h1 class="title">寂寞无为</h1> -->
+		<div class="title">
+			<ul>
+				<li><a class="active" href="./index.html">主页</a></li>
+				<li><a href="#">文章</a></li>
+				<li><a href="#">分类</a></li>
+				<li><a href="#">资料</a></li>
+				<li><a href="#">关于</a></li>
+			</ul>
+		</div>
+	</header>
+	<section>
+		<div class="doc">
+			<iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
+		</div>
+	</section>
+	<footer>
+		<p>在黑暗的尽头，放着失落的歌！</p>
 		
-		let doc_md = t.documentElement.innerText;
-		console.log(doc_md);
-		
-
-	    // const CANVAS = document.getElementsByTagName("canvas")[0];
-	    // const CTX = CANVAS.getContext("2d");
-	    
-		// class heart {
-		// 	constructor(x, y) {
-		// 		this.x = x;
-		// 		this.y = y;
-		// 	}
-
-		// 	toString() {
-		// 		console.log(this.x, this.y);	
-		// 	}
-		// };
-
-		// let person = new heart(2, 3)
-		// person.toString();
-		// // test
-	    // function test() {
-		//     //CTX.clearRect(0, 0, 200, 100);
-		//     CTX.fillStyle = '#000000';
-		//     CTX.fillRect(10, 10, 80, 80);
-
-		//     let path = new Path2D();
-		//     path.arc(50, 50, 25, 0, Math.PI*2, true);
-
-		//     path.moveTo(65,55);
-		//     path.arc(50, 55, 15, 0, Math.PI, false);
-		//     path.moveTo(45, 45);
-		//     path.arc(40, 45, 5, 0, Math.PI*2, true);
-		//     path.moveTo(65, 45);
-		//     path.arc(60, 45, 5, 0, Math.PI*2, true);
-		//     CTX.strokeStyle = '#00ff00';
-		//     CTX.stroke(path);
-	    // };
-
-		// // set window size
-	    // function onResize() {
-        //             CANVAS.width  = document.documentElement.clientWidth;
-        //             CANVAS.height = document.documentElement.clientHeight;
-        //     };
-	    
-	    window.onload = () => {
-		    (() => {
-			// onResize();
-			// test();
-		    })();
-	    };
-	    
-	    // window.onresize = () =>{
-		// 	onResize();
-		// 	test();
-		// };
-	</script>
-
+	</footer>
 </body>
 </html>
