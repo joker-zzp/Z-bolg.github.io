@@ -1,77 +1,178 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="./public/css/index.css">
-	<title>joker-Zzp 's blog</title>
-	<script>
-        window.onload=function(){
-		const CANVAS = document.getElementById("digitalRain");
-		let ctx = CANVAS.getContext("2d");
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="./public/css/index.css">
+        <title>joker-Zzp 's blog</title>
+    </head>
+    <body>
+        <canvas id="digitalRain"></canvas>
+
+        <header class="header">
+            <!-- 按钮 -->
+            <div class="title">
+                <ul>
+                    <li><a class="active" href="./index.html">主页</a></li>
+                    <li><a href="#">文章</a></li>
+                    <li><a href="#">分类</a></li>
+                    <li><a href="#">资料</a></li>
+                    <li><a href="#">关于</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section>
+            <div class="doc">
+                <iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
+            </div>
+        </section>
+
+        <footer>
+        <p>在黑暗的尽头，放着失落的歌！</p>
+        </footer>
+    </body>
+    <script>
+
         
-        /*将画布大小设置为窗口文档显示区大小*/
-        let width = document.documentElement.clientWidth;
-        let height = document.documentElement.clientHeight;
-        CANVAS.width = width;
-        CANVAS.height = height;
-    
-        let fontsize = 16;                          //数字字体大小
-        let columns = Math.ceil(width / fontsize);  //列数（向上取整）
-        let dropLine = [];                          
-        for (let i = 0; i < columns; i++) {
-            dropLine[i] = 0;
-        }
-        
-        /*Run*/
-        if(CANVAS.getContext){
-            timer = setInterval(draw, 30);
+
+        // 画布初始化
+        const CANVAS = document.getElementById("Background");
+        let ctx = CANVAS.getContext("2d");
+
+        // 获取窗口大小并返回 宽,高
+        function getWindownSize (width = 0, height = 0) {
+            return {
+                width : document.documentElement.clientWidth,
+                height : document.documentElement.clientHeight
+            };
         }
 
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.07)";   //设置透明度，逐渐覆盖之前的数字
-            ctx.fillRect(0, 0, width, height);       //填充画布
-            
-            ctx.fillStyle = "#00FF00";               
-            ctx.font = fontsize + "px Simsun";
-            for (let i = 0; i < columns; i++) {
-                let figure = Math.floor(Math.random()*10);  //生成0~9的伪随机数
-                
-                /*绘制数字(核心部分)*/
-                ctx.fillText(figure, i * fontsize, dropLine[i] * fontsize);
-                if (dropLine[i] * fontsize > height || Math.random() > 0.95){
-                    dropLine[i] = 0;
-                }
-                dropLine[i]++;
-            }
+        // 检查客户端是否为手机
+        function checkClient () {
+            let userAgentInfo = navigator.userAgent;
+            const AGENTS = ["Android", "iPhone", "SymbianOS", "Windows Phone"];
+            for (let i = 0; i < AGENTS.length; i++) {
+                if (userAgentInfo.indexOf(AGENTS[i]) > 0) {
+                    // 手机访问
+                    return true;
+                    break;
+                };
+            };
+            return false;
+        };
+
+        // 设置画布宽和高
+        function setSanvasSize () {
+            let { width, height } = getWindownSize();
+            CANVAS.width = width;
+            CANVAS.height = height;
+            console.log("设置画布宽高 width:", width, ", height: ", height );
         }
-    }
-	</script>
-	
-</head>
-<body>
-	<canvas id="digitalRain"></canvas>
-	<header class="header">
-		<!-- <h1 class="title">寂寞无为</h1> -->
-		<div class="title">
-			<ul>
-				<li><a class="active" href="./index.html">主页</a></li>
-				<li><a href="#">文章</a></li>
-				<li><a href="#">分类</a></li>
-				<li><a href="#">资料</a></li>
-				<li><a href="#">关于</a></li>
-			</ul>
-		</div>
-	</header>
-	<section>
-		<div class="doc">
-			<iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
-		</div>
-	</section>
-	<footer>
-		<p>在黑暗的尽头，放着失落的歌！</p>
-		
-	</footer>
-</body>
+
+        /**
+         * DigitalRain
+         * version : 1.0
+        */
+
+        class DigitalRain {
+            
+            // 设置参数
+            static fontsize = 16;
+            static columns = 0;
+            static dropLine = [];
+            static width = 0;
+            static height = 0;
+
+            constructor (width, height) {
+                this.width = width;
+                this.height = height;
+            };
+
+            static checkClient () {
+                if (checkClient()) {
+                    DigitalRain.fontsize = 12;
+                };
+                return checkClient();
+            };
+
+            static init = (() => {
+                DigitalRain.checkClient ();
+                DigitalRain.width = document.documentElement.clientWidth;
+                DigitalRain.height = document.documentElement.clientHeight;
+                DigitalRain.columns = Math.ceil(DigitalRain.width / DigitalRain.fontsize);
+                for (let i = 0; i < DigitalRain.columns; i++) {
+                    DigitalRain.dropLine[i] = 0;
+                };
+                return DigitalRain.dropLine;
+            })();
+
+            static rain () {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.08)";   //设置透明度，逐渐覆盖之前的数字
+                ctx.fillRect(0, 0, DigitalRain.width, DigitalRain.height);       //填充画布
+                ctx.fillStyle = "#00FF00";
+                ctx.font = DigitalRain.fontsize + "px Simsun";
+
+                for (let i = 0; i < DigitalRain.columns; i++) {
+                    let figure = Math.floor(Math.random()*10);  //生成0~9的伪随机数
+
+                    /*绘制数字(核心部分)*/
+                    ctx.fillText(figure, (i * DigitalRain.fontsize), (DigitalRain.dropLine[i] * DigitalRain.fontsize));
+
+                    if (DigitalRain.dropLine[i] * DigitalRain.fontsize > DigitalRain.height || Math.random() > 0.95) {
+                        DigitalRain.dropLine[i] = 0;
+                    }
+                    DigitalRain.dropLine[i]++;
+                };
+            };
+
+            run () {
+                if (CANVAS.getContext) {
+                    let timer = setInterval(DigitalRain.rain, 30);
+                };
+            };
+        };
+
+        function changeiframeHight() {
+            let iframe = document.getElementById("document");
+            iframe.height=document.documentElement.clientHeight * 0.8;
+        }
+
+        // class Test {
+        //     static h2 = 200
+        //     constructor (h1){
+        //         this.h1 = h1;
+        //     }
+
+        //     run () {
+        //         console.log(Test.[[h2]], this.[[h1]]);
+        //     }
+        // }
+        
+
+        window.onload = () => {
+            (() => {
+                // 设置画布高宽
+                setSanvasSize();
+
+                // 设置iframe高
+                changeiframeHight();
+                
+                let digitalRain = new DigitalRain();
+                digitalRain.run();
+                // let test = new Test(1);
+                // test.h1 = 100;
+                // test.run();
+
+            })();
+        };
+
+        window.onresize = () => {
+            (() => {
+                changeiframeHight();
+                console.log("a");
+            })();
+        };
+    </script>
 </html>
