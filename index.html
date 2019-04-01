@@ -5,26 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="./public/css/index.css">
+        <link rel="stylesheet" href="./public/css/buttons.css">
+        <link rel="shortcut icon" href="./image/icon/favicon_32x32.ico" type="image/x-icon">
         <title>joker-Zzp 's blog</title>
     </head>
     <body>
-        <canvas id="digitalRain"></canvas>
+        <canvas id="Background"></canvas>
 
         <header class="header">
             <!-- 按钮 -->
             <div class="title">
-                <ul>
-                    <li><a class="active" href="./index.html">主页</a></li>
-                    <li><a href="#">文章</a></li>
-                    <li><a href="#">分类</a></li>
-                    <li><a href="#">资料</a></li>
-                    <li><a href="#">关于</a></li>
-                </ul>
+                <div class="button-group">
+                    <button type="button" name="index" class="button button-primary" style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;" onclick = "button(this)">主页</button>
+                    <button type="button" name="blog" class="button button-primary" style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;" onclick = "button(this)">文章</button>
+                    <button type="button" name="readme" class="button button-primary" style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;" onclick = "button(this)">关于</button>
+                </div>
             </div>
         </header>
 
         <section>
-            <div class="doc">
+            <div class="doc" >
                 <iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
             </div>
         </section>
@@ -35,11 +35,9 @@
     </body>
     <script>
 
-        
-
         // 画布初始化
         const CANVAS = document.getElementById("Background");
-        let ctx = CANVAS.getContext("2d");
+        // let ctx = CANVAS.getContext("2d");
 
         // 获取窗口大小并返回 宽,高
         function getWindownSize (width = 0, height = 0) {
@@ -71,23 +69,39 @@
             console.log("设置画布宽高 width:", width, ", height: ", height );
         }
 
+        // 按钮方法
+        function button (value) {
+            let button_name = value.name;
+            if (button_name == "index") {
+                document.getElementById("document").src = "./readme.html";
+            } else if (button_name =="readme") {
+                document.getElementById("document").src = "./doc/readme/zzp.html";
+            } else if (button_name == "blog") {
+                document.getElementById("document").src = "./doc/doc.html";
+            } else {
+                document.getElementById("document").src = "./404.html";
+            }
+        }
+
         /**
-         * DigitalRain
+         * DigitalRain (代码雨)
          * version : 1.0
         */
 
         class DigitalRain {
-            
+
             // 设置参数
             static fontsize = 16;
             static columns = 0;
             static dropLine = [];
-            static width = 0;
-            static height = 0;
+            width = 0;
+            height = 0;
+            static ctx = 0;
+            timer = 0;
 
-            constructor (width, height) {
-                this.width = width;
-                this.height = height;
+            constructor (canvas) {
+                this.canvas = canvas;
+                DigitalRain.ctx = this.canvas.getContext("2d");
             };
 
             static checkClient () {
@@ -109,16 +123,16 @@
             })();
 
             static rain () {
-                ctx.fillStyle = "rgba(0, 0, 0, 0.08)";   //设置透明度，逐渐覆盖之前的数字
-                ctx.fillRect(0, 0, DigitalRain.width, DigitalRain.height);       //填充画布
-                ctx.fillStyle = "#00FF00";
-                ctx.font = DigitalRain.fontsize + "px Simsun";
+                DigitalRain.ctx.fillStyle = "rgba(0, 0, 0, 0.08)";   //设置透明度，逐渐覆盖之前的数字
+                DigitalRain.ctx.fillRect(0, 0, DigitalRain.width, DigitalRain.height);       //填充画布
+                DigitalRain.ctx.fillStyle = "#00FF00";
+                DigitalRain.ctx.font = DigitalRain.fontsize + "px Simsun";
 
                 for (let i = 0; i < DigitalRain.columns; i++) {
                     let figure = Math.floor(Math.random()*10);  //生成0~9的伪随机数
 
                     /*绘制数字(核心部分)*/
-                    ctx.fillText(figure, (i * DigitalRain.fontsize), (DigitalRain.dropLine[i] * DigitalRain.fontsize));
+                    DigitalRain.ctx.fillText(figure, (i * DigitalRain.fontsize), (DigitalRain.dropLine[i] * DigitalRain.fontsize));
 
                     if (DigitalRain.dropLine[i] * DigitalRain.fontsize > DigitalRain.height || Math.random() > 0.95) {
                         DigitalRain.dropLine[i] = 0;
@@ -128,10 +142,15 @@
             };
 
             run () {
-                if (CANVAS.getContext) {
-                    let timer = setInterval(DigitalRain.rain, 30);
+                DigitalRain.init;
+                if (this.canvas.getContext) {
+                    DigitalRain.timer = setInterval(DigitalRain.rain, 30);
                 };
             };
+
+            stop () {
+                clearInterval(DigitalRain.timer)
+            }
         };
 
         function changeiframeHight() {
@@ -139,39 +158,24 @@
             iframe.height=document.documentElement.clientHeight * 0.8;
         }
 
-        // class Test {
-        //     static h2 = 200
-        //     constructor (h1){
-        //         this.h1 = h1;
-        //     }
+        // 设置画布高宽
+        setSanvasSize();
 
-        //     run () {
-        //         console.log(Test.[[h2]], this.[[h1]]);
-        //     }
-        // }
+        // 设置iframe高
+        changeiframeHight();
+
+        let digitalRain = new DigitalRain(CANVAS);
         
-
         window.onload = () => {
             (() => {
-                // 设置画布高宽
-                setSanvasSize();
-
-                // 设置iframe高
-                changeiframeHight();
-                
-                let digitalRain = new DigitalRain();
                 digitalRain.run();
-                // let test = new Test(1);
-                // test.h1 = 100;
-                // test.run();
-
             })();
         };
 
         window.onresize = () => {
             (() => {
                 changeiframeHight();
-                console.log("a");
+                // console.log("a");
             })();
         };
     </script>
