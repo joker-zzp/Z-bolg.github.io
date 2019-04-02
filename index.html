@@ -1,181 +1,190 @@
 <!DOCTYPE html>
 <html lang="zh">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="./public/css/index.css">
-        <link rel="stylesheet" href="./public/css/buttons.css">
-        <link rel="shortcut icon" href="./image/icon/favicon_32x32.ico" type="image/x-icon">
-        <title>joker-Zzp 's blog</title>
-    </head>
-    <body>
-        <canvas id="Background"></canvas>
 
-        <header class="header">
-            <!-- 按钮 -->
-            <div class="title">
-                <div class="button-group">
-                    <button type="button" name="index" class="button button-primary" style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;" onclick = "button(this)">主页</button>
-                    <button type="button" name="blog" class="button button-primary" style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;" onclick = "button(this)">文章</button>
-                    <button type="button" name="readme" class="button button-primary" style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;" onclick = "button(this)">关于</button>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./public/css/index.css">
+    <link rel="stylesheet" href="./public/css/buttons.css">
+    <link rel="shortcut icon" href="./image/icon/favicon_32x32.ico" type="image/x-icon">
+    <title>joker-Zzp 's blog</title>
+</head>
+
+<body>
+    <canvas id="Background"></canvas>
+
+    <header class="header">
+        <!-- 按钮 -->
+        <div class="title">
+            <div class="button-group">
+                <button type="button" name="index" class="button button-primary"
+                    style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;"
+                    onclick="button(this)">主页</button>
+                <button type="button" name="blog" class="button button-primary"
+                    style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;"
+                    onclick="button(this)">文章</button>
+                <button type="button" name="readme" class="button button-primary"
+                    style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;"
+                    onclick="button(this)">关于</button>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <section>
-            <div class="doc" >
-                <iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
-            </div>
-        </section>
+    <section>
+        <div class="doc">
+            <iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
+        </div>
+    </section>
 
-        <footer>
+    <footer>
         <p>在黑暗的尽头，放着失落的歌！</p>
-        </footer>
-    </body>
-    <script>
-        
-        // 画布初始化
-        const CANVAS = document.getElementById("Background");
+    </footer>
+</body>
+<script>
 
-        // 获取窗口大小并返回 宽,高
-        function getWindownSize (width = 0, height = 0) {
-            return {
-                width : document.documentElement.clientWidth,
-                height : document.documentElement.clientHeight
+    // 画布初始化
+    const CANVAS = document.getElementById("Background");
+
+    // 获取窗口大小并返回 宽,高
+    function getWindownSize(width = 0, height = 0) {
+        return {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight
+        };
+    }
+
+    // 检查客户端是否为手机
+    function checkClient() {
+        let userAgentInfo = navigator.userAgent;
+        const AGENTS = ["Android", "iPhone", "SymbianOS", "Windows Phone"];
+        for (let i = 0; i < AGENTS.length; i++) {
+            if (userAgentInfo.indexOf(AGENTS[i]) > 0) {
+                // 手机访问
+                return true;
+                break;
             };
+        };
+        return false;
+    };
+
+    // 设置画布宽和高
+    function setSanvasSize() {
+        let { width, height } = getWindownSize();
+        CANVAS.width = width;
+        CANVAS.height = height;
+        console.log("设置画布宽高 width:", width, ", height: ", height);
+    }
+
+    // 按钮方法
+    function button(value) {
+        let button_name = value.name;
+        if (button_name == "index") {
+            document.getElementById("document").src = "./readme.html";
+        } else if (button_name == "readme") {
+            document.getElementById("document").src = "./doc/readme/zzp.html";
+        } else if (button_name == "blog") {
+            document.getElementById("document").src = "./doc/doc.html";
+        } else {
+            document.getElementById("document").src = "./404.html";
         }
+    }
 
-        // 检查客户端是否为手机
-        function checkClient () {
-            let userAgentInfo = navigator.userAgent;
-            const AGENTS = ["Android", "iPhone", "SymbianOS", "Windows Phone"];
-            for (let i = 0; i < AGENTS.length; i++) {
-                if (userAgentInfo.indexOf(AGENTS[i]) > 0) {
-                    // 手机访问
-                    return true;
-                    break;
-                };
-            };
-            return false;
+    /**
+     * DigitalRain (代码雨)
+     * version : 1.0
+    */
+
+    class DigitalRain {
+
+        // 设置参数
+        static fontsize = 16;
+        static columns = 0;
+        static dropLine = [];
+        width = 0;
+        height = 0;
+        static ctx = 0;
+        timer = 0;
+
+        constructor(canvas) {
+            this.canvas = canvas;
+            DigitalRain.ctx = this.canvas.getContext("2d");
         };
 
-        // 设置画布宽和高
-        function setSanvasSize () {
-            let { width, height } = getWindownSize();
-            CANVAS.width = width;
-            CANVAS.height = height;
-            console.log("设置画布宽高 width:", width, ", height: ", height );
-        }
-
-        // 按钮方法
-        function button (value) {
-            let button_name = value.name;
-            if (button_name == "index") {
-                document.getElementById("document").src = "./readme.html";
-            } else if (button_name =="readme") {
-                document.getElementById("document").src = "./doc/readme/zzp.html";
-            } else if (button_name == "blog") {
-                document.getElementById("document").src = "./doc/doc.html";
-            } else {
-                document.getElementById("document").src = "./404.html";
-            }
-        }
-
-        /**
-         * DigitalRain (代码雨)
-         * version : 1.0
-        */
-
-        class DigitalRain {
-
-            // 设置参数
-            static fontsize = 16;
-            static columns = 0;
-            static dropLine = [];
-            width = 0;
-            height = 0;
-            static ctx = 0;
-            timer = 0;
-
-            constructor (canvas) {
-                this.canvas = canvas;
-                DigitalRain.ctx = this.canvas.getContext("2d");
+        static checkClient() {
+            if (checkClient()) {
+                DigitalRain.fontsize = 12;
             };
+            return checkClient();
+        };
 
-            static checkClient () {
-                if (checkClient()) {
-                    DigitalRain.fontsize = 12;
-                };
-                return checkClient();
+        static init = (() => {
+            DigitalRain.checkClient();
+            DigitalRain.width = document.documentElement.clientWidth;
+            DigitalRain.height = document.documentElement.clientHeight;
+            DigitalRain.columns = Math.ceil(DigitalRain.width / DigitalRain.fontsize);
+            for (let i = 0; i < DigitalRain.columns; i++) {
+                DigitalRain.dropLine[i] = 0;
             };
+            return DigitalRain.dropLine;
+        })();
 
-            static init = (() => {
-                DigitalRain.checkClient ();
-                DigitalRain.width = document.documentElement.clientWidth;
-                DigitalRain.height = document.documentElement.clientHeight;
-                DigitalRain.columns = Math.ceil(DigitalRain.width / DigitalRain.fontsize);
-                for (let i = 0; i < DigitalRain.columns; i++) {
+        static rain() {
+            DigitalRain.ctx.fillStyle = "rgba(0, 0, 0, 0.08)";   //设置透明度，逐渐覆盖之前的数字
+            DigitalRain.ctx.fillRect(0, 0, DigitalRain.width, DigitalRain.height);       //填充画布
+            DigitalRain.ctx.fillStyle = "#00FF00";
+            DigitalRain.ctx.font = DigitalRain.fontsize + "px Simsun";
+
+            for (let i = 0; i < DigitalRain.columns; i++) {
+                let figure = Math.floor(Math.random() * 10);  //生成0~9的伪随机数
+
+                /*绘制数字(核心部分)*/
+                DigitalRain.ctx.fillText(figure, (i * DigitalRain.fontsize), (DigitalRain.dropLine[i] * DigitalRain.fontsize));
+
+                if (DigitalRain.dropLine[i] * DigitalRain.fontsize > DigitalRain.height || Math.random() > 0.95) {
                     DigitalRain.dropLine[i] = 0;
-                };
-                return DigitalRain.dropLine;
-            })();
-
-            static rain () {
-                DigitalRain.ctx.fillStyle = "rgba(0, 0, 0, 0.08)";   //设置透明度，逐渐覆盖之前的数字
-                DigitalRain.ctx.fillRect(0, 0, DigitalRain.width, DigitalRain.height);       //填充画布
-                DigitalRain.ctx.fillStyle = "#00FF00";
-                DigitalRain.ctx.font = DigitalRain.fontsize + "px Simsun";
-
-                for (let i = 0; i < DigitalRain.columns; i++) {
-                    let figure = Math.floor(Math.random()*10);  //生成0~9的伪随机数
-
-                    /*绘制数字(核心部分)*/
-                    DigitalRain.ctx.fillText(figure, (i * DigitalRain.fontsize), (DigitalRain.dropLine[i] * DigitalRain.fontsize));
-
-                    if (DigitalRain.dropLine[i] * DigitalRain.fontsize > DigitalRain.height || Math.random() > 0.95) {
-                        DigitalRain.dropLine[i] = 0;
-                    }
-                    DigitalRain.dropLine[i]++;
-                };
+                }
+                DigitalRain.dropLine[i]++;
             };
-
-            run () {
-                DigitalRain.init;
-                if (this.canvas.getContext) {
-                    DigitalRain.timer = setInterval(DigitalRain.rain, 30);
-                };
-            };
-
-            stop () {
-                clearInterval(DigitalRain.timer)
-            }
         };
 
-        function changeiframeHight() {
-            let iframe = document.getElementById("document");
-            iframe.height=document.documentElement.clientHeight * 0.8;
+        run() {
+            DigitalRain.init;
+            if (this.canvas.getContext) {
+                DigitalRain.timer = setInterval(DigitalRain.rain, 30);
+            };
+        };
+
+        stop() {
+            clearInterval(DigitalRain.timer)
         }
+    };
 
-        // 设置画布高宽
-        setSanvasSize();
+    function changeiframeHight() {
+        let iframe = document.getElementById("document");
+        iframe.height = document.documentElement.clientHeight * 0.8;
+    }
 
-        // 设置iframe高
-        changeiframeHight();
+    // 设置画布高宽
+    setSanvasSize();
 
-        let digitalRain = new DigitalRain(CANVAS);
-        
-        window.onload = () => {
-            (() => {
-                digitalRain.run();
-            })();
-        };
+    // 设置iframe高
+    changeiframeHight();
 
-        window.onresize = () => {
-            (() => {
-                changeiframeHight();
-                // console.log("a");
-            })();
-        };
-    </script>
+    let digitalRain = new DigitalRain(CANVAS);
+
+    window.onload = () => {
+        (() => {
+            digitalRain.run();
+        })();
+    };
+
+    window.onresize = () => {
+        (() => {
+            changeiframeHight();
+            // console.log("a");
+        })();
+    };
+</script>
+
 </html>
