@@ -1,45 +1,33 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./public/css/index.css">
-    <link rel="stylesheet" href="./public/css/buttons.css">
-    <link rel="shortcut icon" href="./image/icon/favicon_32x32.ico" type="image/x-icon">
-    <title>joker-Zzp 's blog</title>
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            z-index: -1;
+        }
+    </style>
+
 </head>
 
 <body>
     <canvas id="Background"></canvas>
-
-    <header class="header">
-        <!-- 按钮 -->
-        <div class="title">
-            <div class="button-group">
-                <button type="button" name="index" class="button button-primary"
-                    style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;"
-                    onclick="button(this)">主页</button>
-                <button type="button" name="blog" class="button button-primary"
-                    style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;"
-                    onclick="button(this)">文章</button>
-                <button type="button" name="readme" class="button button-primary"
-                    style="background-color: rgba(124, 0, 0, 0.774) !important; color: rgb(232, 229, 227) !important; font-weight: bold;"
-                    onclick="button(this)">关于</button>
-            </div>
-        </div>
-    </header>
-
-    <section>
-        <div class="doc">
-            <iframe id="document" src="./readme.html" frameborder="0" scrolling="yes"></iframe>
-        </div>
-    </section>
-
-    <footer>
-        <p>在黑暗的尽头，放着失落的歌！</p>
-    </footer>
 </body>
 <script>
 
@@ -169,7 +157,7 @@
     setSanvasSize();
 
     // 设置iframe高
-    changeiframeHight();
+    // changeiframeHight();
 
     let digitalRain = new DigitalRain(CANVAS);
 
@@ -181,7 +169,7 @@
 
     window.onresize = () => {
         (() => {
-            changeiframeHight();
+            // changeiframeHight();
             // console.log("a");
         })();
     };
