@@ -19,26 +19,26 @@ from selenium.webdriver.common.keys import Keys
 driver = webdriver.Chrome("C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe")
 driver.maximize_window()
 
-driver.get('https://www.hbg.com/zh-cn/exchange/?s=top_ht')
+driver.get('https://www.baidu.com')
 
 print("登录时间60秒")
-time.sleep(60)
+time.sleep(10)
 
-for i in range(9):
-    time.sleep(1)
-    print("开始倒计时：", 9 - i)
+# for i in range(9):
+#     time.sleep(1)
+#     print("开始倒计时：", 9 - i)
 
-while True:
-    try:
-        time.sleep(0.3)
-        driver.find_element(By.NAME, 'amount').clear()
-        driver.find_element(By.NAME, 'amount').send_keys('400')
-        time.sleep(0.3)
-        driver.find_element(By.CLASS_NAME, 'bg-buy').click()
-        print("买入成功！ 时间：", time.time())
-    except Exception:
-        print("页面找不到元素，时间：", time.time())
-        driver.refresh()
-        time.sleep(1.5)
+# while True:
+#     try:
+#         # time.sleep(0.3)
+#         # driver.find_element(By.NAME, 'amount').clear()
+#         # driver.find_element(By.NAME, 'amount').send_keys('400')
+#         # time.sleep(0.3)
+#         # driver.find_element(By.CLASS_NAME, 'bg-buy').click()
+#         # print("买入成功！ 时间：", time.time())
+#     except Exception:
+#         print("页面找不到元素，时间：", time.time())
+#         driver.refresh()
+#         time.sleep(1.5)
         
 driver.close()
