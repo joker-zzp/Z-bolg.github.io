@@ -56,7 +56,7 @@ class DigitalRain {
     static rain() {
         DigitalRain.ctx.fillStyle = "rgba(0, 0, 0, 0.08)";   //设置透明度，逐渐覆盖之前的数字
         DigitalRain.ctx.fillRect(0, 0, DigitalRain.width, DigitalRain.height);       //填充画布
-        DigitalRain.ctx.fillStyle = "#0000FF";
+        DigitalRain.ctx.fillStyle = "#00FFFF";
         DigitalRain.ctx.font = DigitalRain.fontsize + "px Simsun";
 
         for (let i = 0; i < DigitalRain.columns; i++) {
