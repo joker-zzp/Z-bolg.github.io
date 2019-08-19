@@ -37,7 +37,7 @@ class DigitalRain {
         if (checkClient()) {
             DigitalRain.fontsize = 12;
         } else {
-            DigitalRain.fontsize = 16;
+            DigitalRain.fontsize = 18;
         };
         return checkClient();
     };
